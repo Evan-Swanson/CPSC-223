@@ -1,0 +1,373 @@
+
+-------------CASE OF INSERTING INTO ROOT WITH NO SPLITTING -----------
+
+Test1: CASE OF EMPTY TREE
+
+Pre: 
+
+
+*Inserting 10
+
+
+Post: 
+
+		10 
+
+Test2: CASE OF ROOT WITH SINGLE ITEM
+
+Pre: 
+
+		10 
+
+*Inserting 30
+
+
+Post: 
+
+		10 30 
+
+Test3: CASE OF ROOT WITH TWO ITEMS
+
+Pre: 
+
+		10 30 
+
+*Inserting 60
+
+
+Post: 
+
+		10 30 60 
+
+Test4: CASE OF INSERTING SAME ITEMS, BUT IN THE ORDER: 10,60,30
+
+Pre: 
+
+
+*Inserting 10,60,30
+
+
+Post: 
+
+		10 30 60 
+
+Test5: CASE OF INSERTING SAME ITEMS, BUT IN THE ORDER: 30,10,60
+
+Pre: 
+
+
+*Inserting 30,10,60
+
+
+Post: 
+
+		10 30 60 
+
+		
+		
+		
+		
+Test6: CASE OF INSERTING SAME ITEMS, BUT IN THE ORDER: 30,60,10
+
+Pre: 
+
+
+*Inserting 30,60,10
+
+
+Post: 
+
+		10 30 60 
+
+Test7: CASE OF INSERTING SAME ITEMS, BUT IN THE ORDER: 60,10,30
+
+Pre: 
+
+
+*Inserting 60,10,30
+
+
+Post: 
+
+		10 30 60 
+
+-------------CASE OF ROOT NODE SPLITTING -----------
+
+Test1: CASE OF ADDING TO LEFT SIDE, RIGHT SPOT
+
+Pre: 
+
+		10 30 60 
+
+*Inserting 20
+
+
+Post: 
+
+				60 
+		30 
+				10 20 
+
+Test2: CASE OF ADDING TO LEFT SIDE, LEFT SPOT
+
+Pre: 
+
+		10 30 60 
+
+*Inserting 5
+
+
+Post: 
+
+				60 
+		30 
+				5 10 
+
+Test3: CASE OF ADDING TO RIGHT SIDE, LEFT SPOT
+
+Pre: 
+
+		10 30 60 
+
+*Inserting 50
+
+
+
+
+
+
+
+Post: 
+
+				50 60 
+		30 
+				10 
+
+Test4: CASE OF ADDING TO RIGHT SIDE, RIGHT SPOT
+
+Pre: 
+
+		10 30 60 
+
+*Inserting 70
+
+
+Post: 
+
+				60 70 
+		30 
+				10 
+
+-------------CASE OF ADDING TO A LEVEL 2 NODE -----------
+
+Test1: CASE OF ADDING TO RIGHT SIDE
+
+Pre: 
+
+				60 
+		30 
+				10 20 
+
+*Inserting 40
+
+
+Post: 
+
+				40 60 
+		30 
+				10 20 
+
+Test2: CASE OF ADDING TO A NODE THAT MAKES IT FULL
+
+Pre: 
+
+				40 60 
+		30 
+				10 20 
+
+*Inserting 70
+
+
+Post: 
+
+				40 60 70 
+		30 
+				10 20 
+
+Test3: CASE OF ADDING TO LEFT SIDE
+
+Pre: 
+
+				60 
+		30 
+				10 20 
+
+*Inserting 25
+
+
+Post: 
+
+				60 
+		30 
+				10 20 25 
+
+-------------CASE OF SPLITTING A LEVEL 2 NODE -----------
+
+Test1: CASE OF ADDING INTO NEW RIGHT NODE
+
+Pre: 
+
+				40 50 60 
+		30 
+				10 20 
+
+*Inserting 70
+
+
+Post: 
+
+				60 70 
+		30 50 
+				40 
+				10 20 
+
+Test2: CASE OF SPLITTING A RIGHT NODE AND THE ITEM GOES INTO MIDDLE
+
+Pre: 
+
+				40 50 60 
+		30 
+				10 20 
+
+*Inserting 45
+
+
+Post: 
+
+				60 
+		30 50 
+				40 45 
+				10 20 
+
+Test3: CASE OF SPLITTING A LEFT NODE
+
+Pre: 
+
+				60 
+		30 
+				10 20 25 
+
+*Inserting 15
+
+
+Post: 
+
+				60 
+		20 30 
+				25 
+				10 15 
+
+Test4: CASE OF SPLITTING A LEFT NODE AND NEW ITEM GOES INTO MIDDLE
+
+Pre: 
+
+				60 
+		30 
+				10 20 25 
+
+*Inserting 27
+
+
+Post: 
+
+				60 
+		20 30 
+				25 27 
+				10 
+
+-------------ADDING TO A LEVEL 2 NODE AFTER A SPLIT -----------
+
+Test1: CASE OF ADDING INTO NEW RIGHT NODE
+
+Pre: 
+
+				60 70 
+		30 50 
+				40 
+				10 20 
+
+*Inserting 80
+
+
+Post: 
+
+				60 70 80 
+		30 50 
+				40 
+				10 20 
+
+Test2: CASE OF ADDING INTO LEFT NODE
+
+Pre: 
+
+				60 70 80 
+		30 50 
+				40 
+				10 20 
+
+*Inserting 25
+
+
+Post: 
+
+				60 70 80 
+		30 50 
+				40 
+				10 20 25 
+
+-------------SPLITTING A LEVEL 2 NODE TO MAKE 4 CHILDREN -----------
+
+Test1: CASE OF SPLITTING RIGHT NODE
+
+Pre: 
+
+				60 70 80 
+		30 50 
+				40 
+				10 20 
+
+*Inserting 95
+
+
+
+
+
+
+
+Post: 
+
+				80 95 
+				60 
+		30 50 70 
+				40 
+				10 20 
+
+Test2: CASE OF SPLITTING LEFT NODE
+
+Pre: 
+
+				60 70 
+		30 50 
+				40 
+				10 15 20 
+
+*Inserting 13
+
+
+Post: 
+
+				60 70 
+				40 
+		15 30 50 
+				20 
+				10 13 
